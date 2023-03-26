@@ -12,17 +12,75 @@
         <div class="page-name">
             <h1>TicTacToe</h1>
         </div>
+        <div class="game-options">
+            <input class="game-menu-button pp" type="button" value="Player VS Player">
+            <input class="game-menu-button pc" type="button" value="Player VS Computer">
+        </div>
         <div class="game-board">
-            <div class="game-cell c1">1</div>
-            <div class="game-cell c2">2</div>
-            <div class="game-cell c3">3</div>
-            <div class="game-cell c4">4</div>
-            <div class="game-cell c5">5</div>
-            <div class="game-cell c6">6</div>
-            <div class="game-cell c7">7</div>
-            <div class="game-cell c8">8</div>
-            <div class="game-cell c9">9</div>
+            <input class="game-cell" id="1" onclick="changexo('1')" type="button" value="">
+            <input class="game-cell" id="2" onclick="changexo('2')" type="button" value="">
+            <input class="game-cell" id="3" onclick="changexo('3')" type="button" value="">
+            <input class="game-cell" id="4" onclick="changexo('4')" type="button" value="">
+            <input class="game-cell" id="5" onclick="changexo('5')" type="button" value="">
+            <input class="game-cell" id="6" onclick="changexo('6')" type="button" value="">
+            <input class="game-cell" id="7" onclick="changexo('7')" type="button" value="">
+            <input class="game-cell" id="8" onclick="changexo('8')" type="button" value="">
+            <input class="game-cell" id="9" onclick="changexo('9')" type="button" value="">
+        </div>
+        <div class="game-end">
+            <h1>Win!</h1>
+            <input class="game-menu-button restart" onclick="restart_game()" type="button" value="Restart">
         </div>
     </div>
+    <script>
+        var turn;
+        can_click = [1,2,3,4,5,6,7,8,9];
+        turn = 'x';
+        
+        function check_click(name) {
+            for (i=0; i<can_click.length; i++) {
+                if (i == parseInt(name)) {
+                    console.log('check true')
+                    return true;
+                }
+            }
+            console.log('check false')
+            return false;
+        }
+
+        function changexo(name) {
+            console.log(name)
+            if (check_click(name)) {
+                if (turn == "x") {
+                    console.log(name + "x");
+                    document.getElementById(name).value = "X";
+                    turn = "o";
+                } 
+                else if (turn == 'o') {
+                    console.log(name + "o");
+                    document.getElementById(name).value = "O";
+                    turn = "x";
+                }
+            }
+
+            for (i=0;i<can_click.length;i++) {
+                if (can_click[i] == name) {
+                    can_click[i] = 0;
+                }
+            }
+
+            console.log(can_click);
+        }
+        
+        function restart_game() {
+            can_click = [1,2,3,4,5,6,7,8,9];
+            var list_reset = [];
+            list_reset = document.getElementsByClassName("game-cell");
+            console.log(list_reset);
+            for (i=0;i<list_reset.length;i++) {
+                document.getElementById(list_reset[i].id).value = "";
+            }
+        }
+    </script>
 </body>
 </html>

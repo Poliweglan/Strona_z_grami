@@ -1,4 +1,5 @@
 body {
+    font-family: 'Courier New', monospace;
     background-color: #f1f1f1;
     color: #252525;
     margin: 0;
@@ -10,11 +11,33 @@ body {
     margin-right: auto;
 }
 
-.game-board {
-    font-size: 60px;
+.game-options {
+    text-align: center;
+    border: none;
+    color: #f1f1f1;
 }
 
-.c1 {background-color: #1ab;}
+.game-menu-button {
+    font-family: 'Courier New', monospace;
+    font-size: 20px;
+    border-radius: 0;
+    border-color: #252525;
+    border-width: 2px;
+    border-style: solid;
+    transition-duration: 0.3s;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.game-menu-button:hover {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    transition-duration: 0.3s;
+    font-weight: bold;
+}
+
+/* .c1 {background-color: #1ab;}
 .c2 {background-color: #2f2;}
 .c3 {background-color: #3b3;}
 .c4 {background-color: #4ff;}
@@ -22,24 +45,45 @@ body {
 .c6 {background-color: #6fa;}
 .c7 {background-color: #7fa;}
 .c8 {background-color: #8ee;}
-.c9 {background-color: #9d9;}
+.c9 {background-color: #9d9;} */
 
 .game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+    gap: 5px;
+
+    font-size: 60px;
     background-color: #252525;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     width: 50vh;
     height: 50vh;
-    min-width: 312px;
-    min-height: 312px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
+    min-width: 310px;
+    min-height: 310px;
+}
+
+.game-end {
+    text-align: center;
 }
 
 .game-cell {
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em;
+    cursor: pointer;
     min-width: 100px;
     min-height: 100px;
+    justify-content: center;
+    align-content: center;
+    transition-duration: 0.3s;
 }
 
+.game-cell:hover {
+    background-color: #e0e0e0;
+    transition-duration: 0.3s;
+}
