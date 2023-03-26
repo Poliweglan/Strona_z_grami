@@ -4,43 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strona z grami</title>
     <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
 <body>
-    <div id="container">
-        <div id="testSidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#" class="tablinks" onclick="openPage('Home')" id="first_open">Home</a>
-            <a href="#" class="tablinks" onclick="openPage('TicTacToe')">TicTacToe</a>
-            <a href="#" class="tablinks" onclick="openPage('Memory')">Memory</a>
-            <a href="#" class="tablinks" onclick="openPage('Puzzle')">Puzzle</a>
+    <div class="main">
+        <div class="page-name">
+            <h1>TicTacToe</h1>
         </div>
-
-        <span id="openNav" onclick="openNav()">&#9776</span>
-
-        <div id="main">
-            <div id="Home" class="gamecontent">
-                <h3>HOME PAGE</h3>
-                <p>London is the capital city of England.</p>
-            </div>
-            <div id="TicTacToe" class="gamecontent">
-                <h3>TicTacToe</h3>
-                <p>London is the capital city of England.</p>
-            </div>
-              
-            <div id="Memory" class="gamecontent">
-                <h3>Memory</h3>
-                <p>Paris is the capital of France.</p>
-            </div>
-              
-            <div id="Puzzle" class="gamecontent">
-                <h3>Puzzle</h3>
-                <p>Tokyo is the capital of Japan.</p>
-            </div>
+        <div class="game-board">
+            <div class="game-cell c1">1</div>
+            <div class="game-cell c2">2</div>
+            <div class="game-cell c3">3</div>
+            <div class="game-cell c4">4</div>
+            <div class="game-cell c5">5</div>
+            <div class="game-cell c6">6</div>
+            <div class="game-cell c7">7</div>
+            <div class="game-cell c8">8</div>
+            <div class="game-cell c9">9</div>
         </div>
     </div>
-    <script src="script.js"></script>
-    <script>document.getElementById("first_open").click()</script>
 </body>
 </html>
