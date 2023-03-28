@@ -1,89 +1,92 @@
 body {
-    font-family: 'Courier New', monospace;
     background-color: #f1f1f1;
     color: #252525;
     margin: 0;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-.page-name {
+.main {
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-.game-options {
-    text-align: center;
-    border: none;
-    color: #f1f1f1;
-}
-
-.game-menu-button {
-    font-family: 'Courier New', monospace;
-    font-size: 20px;
-    border-radius: 0;
-    border-color: #252525;
-    border-width: 2px;
-    border-style: solid;
-    transition-duration: 0.3s;
+.menu-game {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f1f1f1;
+    color: #252525;
+    border-width: 3px;
+    border-style:solid;
     padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.game-menu-button:hover {
-    background-color: #e0e0e0;
-    border-radius: 10px;
-    transition-duration: 0.3s;
+    font-size: 20px;
+    display: inline-flex;
+    transition: 0.2s;
     font-weight: bold;
 }
 
-/* .c1 {background-color: #1ab;}
-.c2 {background-color: #2f2;}
-.c3 {background-color: #3b3;}
-.c4 {background-color: #4ff;}
-.c5 {background-color: #5aa;}
-.c6 {background-color: #6fa;}
-.c7 {background-color: #7fa;}
-.c8 {background-color: #8ee;}
-.c9 {background-color: #9d9;} */
-
-.game-board {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: space-between;
-    gap: 5px;
-
-    font-size: 60px;
-    background-color: #252525;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    width: 50vh;
-    height: 50vh;
-    min-width: 310px;
-    min-height: 310px;
+.menu-game:hover {
+    border-radius: 10px;
+    color: #000000;
+    background-color: #e4e4e4;
+    transition: 0.3s;
 }
 
-.game-end {
-    text-align: center;
+.game-board {
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 300px;
+    min-width: 300px;
+    width: 50vh;
+    height: 50vh;
+}
+
+.game-board { 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    justify-content: center; 
 }
 
 .game-cell {
-    font-weight: bold;
-    font-family: 'Courier New', monospace;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    font-size: 1em;
-    cursor: pointer;
-    min-width: 100px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f1f1f1;
+    color: #252525;
+    /* font-size: 20px;  */
+    font-size: 0;
     min-height: 100px;
-    justify-content: center;
-    align-content: center;
-    transition-duration: 0.3s;
+    min-width: 100px;
+    border-width: 3px;
+    border-style:solid;
+    transition: 0.2s;
 }
 
-.game-cell:hover {
-    background-color: #e0e0e0;
-    transition-duration: 0.3s;
+.game-cell {
+    align-self: stretch;
+    justify-self: stretch;
 }
+
+.c0 {border-top: 0; border-left: 0;}
+.c1 {border-top: 0;}
+.c2 {border-top: 0; border-right: 0;}
+.c3 {border-left: 0;}
+/* .c4 {border-top: 0; border-left: 0;} */
+.c5 {border-right: 0;;}
+.c6 {border-left: 0; border-bottom: 0;}
+.c7 {border-bottom: 0;}
+.c8 {border-bottom: 0; border-right: 0;}
+
+.game-cell:hover {
+    color: #000000;
+    background-color: #e4e4e4;
+    transition: 0.3s;
+}
+
+.c0:hover {border-radius: 20px 20px 0 20px;}
+.c1:hover {border-radius: 20px 20px 0 0;}
+.c2:hover {border-radius: 20px 20px 20px 0;}
+.c3:hover {border-radius: 20px 0 0 20px;}
+.c4:hover {border-radius: 10px;}
+.c5:hover {border-radius: 0 20px 20px 0;}
+.c6:hover {border-radius: 20px 0 20px 20px;}
+.c7:hover {border-radius: 0 0 20px 20px;}
+.c8:hover {border-radius: 0 20px 20px 20px;}
+
+.win-info {display: none;}
