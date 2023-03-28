@@ -15,15 +15,15 @@
             <input class="menu-game" id="option2" type="button" value="Player VS Computer" onclick="set_game_mode('option2')">
         </div>
         <div class="game-board">
-            <input class="game-cell c0" id="0" type="button" value="" onclick="user_press('0')">
-            <input class="game-cell c1" id="1" type="button" value="" onclick="user_press('1')">
-            <input class="game-cell c2" id="2" type="button" value="" onclick="user_press('2')">
-            <input class="game-cell c3" id="3" type="button" value="" onclick="user_press('3')">
-            <input class="game-cell c4" id="4" type="button" value="" onclick="user_press('4')">
-            <input class="game-cell c5" id="5" type="button" value="" onclick="user_press('5')">
-            <input class="game-cell c6" id="6" type="button" value="" onclick="user_press('6')">
-            <input class="game-cell c7" id="7" type="button" value="" onclick="user_press('7')">
-            <input class="game-cell c8" id="8" type="button" value="" onclick="user_press('8')">
+            <input class="game-cell c0" id="0" type="button" value="" onclick="user_press('0'), dis_but('0')">
+            <input class="game-cell c1" id="1" type="button" value="" onclick="user_press('1'), dis_but('1')">
+            <input class="game-cell c2" id="2" type="button" value="" onclick="user_press('2'), dis_but('2')">
+            <input class="game-cell c3" id="3" type="button" value="" onclick="user_press('3'), dis_but('3')">
+            <input class="game-cell c4" id="4" type="button" value="" onclick="user_press('4'), dis_but('4')">
+            <input class="game-cell c5" id="5" type="button" value="" onclick="user_press('5'), dis_but('5')">
+            <input class="game-cell c6" id="6" type="button" value="" onclick="user_press('6'), dis_but('6')">
+            <input class="game-cell c7" id="7" type="button" value="" onclick="user_press('7'), dis_but('7')">
+            <input class="game-cell c8" id="8" type="button" value="" onclick="user_press('8'), dis_but('8')">
         </div>
             <button class="menu-game" type="reset" onclick="restart_game()">Reset</button>
             <h1 class="win-info" id="draw">Draw!</h1>
@@ -40,11 +40,27 @@
         let board_list = [0,1,2,3,4,5,6,7,8];
         let win_list = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [6,4,2]];
         let hits_x=0, hits_o=0, hits_draw=0;
-        let game_cells;
+        let game_cells = document.getElementsByClassName("game-cell");
         let button_value;
         let mark;
         let win_info_list = document.getElementsByClassName("win-info");
         console.log(win_info_list);
+
+		function dis_but(name) {
+			document.getElementById(name).disabled=true;
+		}
+		
+		function enab_all() {
+			for (i=0;i<9;i++) {
+				document.getElementById(i.toString()).disabled=false;
+			}
+		}
+		
+		function dis_all() {
+			for (i=0;i<9;i++) {
+				document.getElementById(i.toString()).disabled=true;
+			}
+		}
 
         function set_game_mode(mode) {
             console.log(game_mode);
@@ -137,22 +153,24 @@
 
             let who_win = func_who_win();
             console.log("Win:", who_win);
-
-            if (who_win == "draw") {
-                document.getElementById("draw").style.display="block";
-            } else if (who_win == "winX") {
-                document.getElementById("x").style.display="block";
-            } else if (who_win == "winO" && game_mode=="option1") {
-                document.getElementById("o").style.display="block";
-            } else if (who_win == "winO" && game_mode=="option2") {
-                document.getElementById("pc").style.display="block";
-            }
+			if (who_win != false) {
+				dis_all()
+				if (who_win == "draw") {
+					document.getElementById("draw").style.display="block";
+				} else if (who_win == "winX") {
+					document.getElementById("x").style.display="block";
+				} else if (who_win == "winO" && game_mode=="option1") {
+					document.getElementById("o").style.display="block";
+				} else if (who_win == "winO" && game_mode=="option2") {
+					document.getElementById("pc").style.display="block";
+				}
+			}
 
             mark_player == "X" ? mark_player = "O" : mark_player = "X";
 
             if (game_mode == "option2" && mark_player=="O" && board_list.length != 0) {
                 pc_press = randElemList(board_list);
-                user_press(pc_press.toString());
+				document.getElementById(pc_press.toString()).click();
             }
         }
 
@@ -161,6 +179,7 @@
         }
 
         function restart_game() {
+			enab_all()
             mark_player = "X";
             board_list = [0,1,2,3,4,5,6,7,8];
             document.getElementById("draw").style.display="none";
